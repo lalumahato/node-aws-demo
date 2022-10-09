@@ -2,7 +2,6 @@ require('dotenv').config();
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
-const apiRouter = require('./routes');
 
 // Initialize the app and port
 const app = express();
@@ -25,7 +24,7 @@ app.post('/users', (req, res) => {
   users.push({ id, name, city });
   return res.status(201).json({ users });
 });
-app.use('/', apiRouter);
+require('./routes')(app);
 
 // Create server
 const server = http.createServer(app);
