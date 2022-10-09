@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const users = [{ id: 101, name: 'John Smith' }];
+const users = [{ id: 101, name: 'John Smith', city: 'New York' }];
 
 // List users
 app.get('/users', (req, res) => {
@@ -20,8 +20,8 @@ app.get('/users', (req, res) => {
 
 // Add User
 app.post('/users', (req, res) => {
-  const { id, name } = req.body;
-  users.push({ id, name });
+  const { id, name, city } = req.body;
+  users.push({ id, name, city });
   return res.status(201).json({ users });
 });
 
